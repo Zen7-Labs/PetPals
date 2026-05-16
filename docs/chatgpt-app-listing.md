@@ -2,6 +2,10 @@
 
 A snapshot of the public ChatGPT app store page for PetPals. Source: [chatgpt.com/apps/petpals](https://chatgpt.com/apps/petpals/asdk_app_697047972e8c8191a13a465c9480d508) (saved HTML in this directory).
 
+<p align="center">
+  <img alt="PetPals" width="128" src="./images/logo-256_circle.png">
+</p>
+
 ---
 
 ## Identity
