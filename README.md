@@ -57,46 +57,27 @@ The same account, cart, and order history are reachable at https://platform.zen7
 
 ## Capability map
 
-```mermaid
-flowchart TB
-    subgraph caps["PetPals capabilities"]
-        direction LR
-        subgraph DISCOVER
-            D["Product search<br/>Rich widget cards<br/>Stock / price / reviews"]
-        end
-        subgraph SHOP
-            S["Server-side cart<br/>Saved addresses<br/>In-widget checkout<br/>Min-order guard"]
-        end
-        subgraph PAY
-            P["Stripe Checkout<br/>Coinbase Commerce<br/>Webhooks + reconciliation<br/>Test-account whitelist"]
-        end
-        subgraph CARE
-            C["Order history<br/>Refund flow<br/>Status sync<br/>Mall sync"]
-        end
-    end
-    subgraph identity["One identity across all of it"]
-        direction LR
-        EM["Email + password"]
-        G["Google Sign-In"]
-        O["ChatGPT OAuth"]
-    end
-    caps --> identity
-```
+| Discover | Shop | Pay | Care |
+|---|---|---|---|
+| Product search | Server-side cart | Stripe Checkout | Order history |
+| Rich widget cards | Saved addresses | Coinbase Commerce | Refund flow |
+| Stock / price / reviews | In-widget checkout | Webhooks + reconciliation | Status sync |
+| | Min-order guard | Test-account whitelist | Mall sync |
+
+**One identity across all of it** — Email + password · Google Sign-In · ChatGPT OAuth
 
 ---
 
 ## End-to-end shopper journey
 
-```mermaid
-flowchart LR
-    A["<b>1. Ask</b><br/><i>'find me senior cat food'</i>"]
-    B["<b>2. Browse</b><br/>Product widget<br/>renders inline"]
-    C["<b>3. Add to cart</b><br/>Items sync to a<br/>server-side cart"]
-    D["<b>4. Confirm in chat</b><br/>Pick address +<br/>see total + tax"]
-    E["<b>5. Pay (external)</b><br/>Stripe / Coinbase;<br/>result via webhook"]
-    F["<b>6. Track / refund</b><br/>'Where's my order?'<br/>in chat or web"]
-    A --> B --> C --> D --> E --> F
-```
+| # | Step | What happens |
+|---|---|---|
+| 1 | **Ask** | Shopper asks in natural language — *"find me senior cat food"* |
+| 2 | **Browse** | ChatGPT renders the product widget inline |
+| 3 | **Add to cart** | Items sync to a server-side cart tied to the shopper's `userId` |
+| 4 | **Confirm in chat** | Pick a shipping address, see total + US sales tax in the widget |
+| 5 | **Pay (external)** | Stripe / Coinbase opens; result posts back via webhook |
+| 6 | **Track / refund** | *"Where's my order?"* — handled in chat or on the website |
 
 Every step persists to the same account, so the shopper can switch between ChatGPT and the website at any point without losing state.
 
