@@ -57,44 +57,45 @@ The same account, cart, and order history are reachable at https://platform.zen7
 
 ## Capability map
 
-```
-                          PetPals Capabilities
-   ┌──────────────────────────────────────────────────────────────┐
-   │                                                              │
-   │   DISCOVER          SHOP               PAY            CARE   │
-   │  ─────────────    ─────────────    ─────────────   ─────────│
-   │  • Product       • Server-side    • Stripe        • Order   │
-   │    search          cart             Checkout        history │
-   │  • Rich widget   • Saved          • Coinbase      • Refund  │
-   │    cards           addresses        Commerce        flow    │
-   │  • Stock /       • In-widget      • Webhooks +    • Status  │
-   │    price /         checkout         reconciliation  sync    │
-   │    reviews       • Min-order      • Test-account  • Mall    │
-   │                    guard            whitelist       sync    │
-   │                                                              │
-   │              ─── one identity across all of it ───           │
-   │   • Email + password   • Google Sign-In   • ChatGPT OAuth    │
-   │                                                              │
-   └──────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph caps["PetPals capabilities"]
+        direction LR
+        subgraph DISCOVER
+            D["Product search<br/>Rich widget cards<br/>Stock / price / reviews"]
+        end
+        subgraph SHOP
+            S["Server-side cart<br/>Saved addresses<br/>In-widget checkout<br/>Min-order guard"]
+        end
+        subgraph PAY
+            P["Stripe Checkout<br/>Coinbase Commerce<br/>Webhooks + reconciliation<br/>Test-account whitelist"]
+        end
+        subgraph CARE
+            C["Order history<br/>Refund flow<br/>Status sync<br/>Mall sync"]
+        end
+    end
+    subgraph identity["One identity across all of it"]
+        direction LR
+        EM["Email + password"]
+        G["Google Sign-In"]
+        O["ChatGPT OAuth"]
+    end
+    caps --> identity
 ```
 
 ---
 
 ## End-to-end shopper journey
 
-```
-   1. Ask                  2. Browse            3. Add to cart
-   "find me              ChatGPT renders       Items sync to a
-   senior cat            product widget        server-side cart
-   food"            ─►   inline           ─►   tied to userId
-
-                                                    │
-                                                    ▼
-   6. Track / refund     5. Pay (external)     4. Confirm in chat
-   "Where's my order?"   Stripe / Coinbase     Pick address +
-   handled in chat   ◄── opens; result    ◄──  see total + tax
-   or website            posts back via         in the widget
-                         webhook
+```mermaid
+flowchart LR
+    A["<b>1. Ask</b><br/><i>'find me senior cat food'</i>"]
+    B["<b>2. Browse</b><br/>Product widget<br/>renders inline"]
+    C["<b>3. Add to cart</b><br/>Items sync to a<br/>server-side cart"]
+    D["<b>4. Confirm in chat</b><br/>Pick address +<br/>see total + tax"]
+    E["<b>5. Pay (external)</b><br/>Stripe / Coinbase;<br/>result via webhook"]
+    F["<b>6. Track / refund</b><br/>'Where's my order?'<br/>in chat or web"]
+    A --> B --> C --> D --> E --> F
 ```
 
 Every step persists to the same account, so the shopper can switch between ChatGPT and the website at any point without losing state.
