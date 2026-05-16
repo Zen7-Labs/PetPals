@@ -28,6 +28,14 @@ A snapshot of the public ChatGPT app store page for PetPals. Source: [chatgpt.co
 
 ---
 
+## Screenshots
+
+| 1 | 2 | 3 |
+|---|---|---|
+| ![Screenshot 1 for PetPals](../images/screenshots-1.png) | ![Screenshot 2 for PetPals](../images/screenshots-2.png) | ![Screenshot 3 for PetPals](../images/screenshots-3.png) |
+
+---
+
 ## Suggested starter prompts
 
 The listing surfaces these example prompts on the "Start chat" panel:
