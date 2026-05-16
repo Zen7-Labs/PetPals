@@ -32,7 +32,7 @@ A snapshot of the public ChatGPT app store page for PetPals. Source: [chatgpt.co
 
 | 1 | 2 | 3 |
 |---|---|---|
-| ![Screenshot 1 for PetPals](../images/screenshots-1.png) | ![Screenshot 2 for PetPals](../images/screenshots-2.png) | ![Screenshot 3 for PetPals](../images/screenshots-3.png) |
+| ![Screenshot 1 for PetPals](./images/screenshots-1.png) | ![Screenshot 2 for PetPals](./images/screenshots-2.png) | ![Screenshot 3 for PetPals](./images/screenshots-3.png) |
 
 ---
 
